@@ -1,0 +1,2626 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// IAR C/C++ Compiler V9.30.1.3056 for 8051               06/Jul/2016  15:51:34
+// Copyright 2004-2015 IAR Systems AB.
+// Standalone license - IAR Embedded Workbench for 8051
+//
+//    Core               =  plain
+//    Code model         =  banked
+//    Data model         =  large
+//    Calling convention =  xdata reentrant
+//    Constant location  =  data_rom
+//    Dptr setup         =  1,16
+//                          
+//    Source file        =  
+//        C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Components\osal\common\OSAL_Memory.c
+//    Command line       =  
+//        -f "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\Source\znp.cfg"
+//        (-DMAC_CFG_APP_PENDING_QUEUE=TRUE
+//        "-DZSTACK_DEVICE_BUILD=(DEVICE_BUILD_COORDINATOR |
+//        DEVICE_BUILD_ROUTER | DEVICE_BUILD_ENDDEVICE)" -DNWK_AUTO_POLL
+//        -DZNP_RUN_WDOG=FALSE -DZNP_UART_BAUD=HAL_UART_BR_115200 -DZIGBEEPRO
+//        -DZIGBEE_FRAGMENTATION -DINTER_PAN -DOSAL_CLOCK -DOSAL_SAPI=FALSE
+//        -DSAPI_CB_FUNC=FALSE -DHOLD_AUTO_START -DNV_RESTORE -DNV_INIT
+//        -DNUM_DISC_ATTEMPTS=0 -DMT_UTIL_FUNC -DMT_SYS_FUNC -DMT_AF_FUNC
+//        -DMT_SAPI_FUNC -DMT_SAPI_CB_FUNC -DMT_ZDO_CB_FUNC -DMT_ZDO_FUNC
+//        -DMT_ZDO_MGMT -DMT_ZDO_EXTENSIONS -DMT_APP_FUNC) -f "C:\Texas
+//        Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\Tools\CC2530DB\f8wConfig.cfg"
+//        (-DZIGBEEPRO -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
+//        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
+//        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
+//        -DBEACON_REQUEST_DELAY=100 -DBEACON_REQ_DELAY_MASK=0x00FF
+//        -DLINK_STATUS_JITTER_MASK=0x007F -DROUTE_EXPIRY_TIME=30
+//        -DAPSC_ACK_WAIT_DURATION_POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7
+//        -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3
+//        -DNWK_MAX_DATA_RETRIES=2 -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9
+//        -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40 -DNWK_MAX_BINDING_ENTRIES=4
+//        -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07,
+//        0x09, 0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C,
+//        0x0D}" -DMAC_MAX_FRAME_SIZE=116 -DZDNWKMGR_MIN_TRANSMISSIONS=20
+//        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
+//        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100
+//        -DREJOIN_POLL_RATE=440) -f "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\Tools\CC2530DB\f8wZCL.cfg"
+//        "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Components\osal\common\OSAL_Memory.c" -D FEATURE_SYSTEM_STATS
+//        -D POWER_SAVING -lC "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\CC2530-Debug\List" -lA "C:\Texas
+//        Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\CC2530-Debug\List" --diag_suppress
+//        Pe001,Pa010 -o "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\CC2530-Debug\Obj" -e
+//        --no_code_motion --debug --core=plain --dptr=16,1 --data_model=large
+//        --code_model=banked --calling_convention=xdata_reentrant
+//        --place_constants=data_rom --nr_virtual_regs 16 -I "C:\Texas
+//        Instruments\Z-Stack Mesh 1.0.0\Projects\zstack\ZNP\CC253x\" -I
+//        "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\Source\" -I "C:\Texas
+//        Instruments\Z-Stack Mesh 1.0.0\Projects\zstack\ZNP\CC253x\..\Source\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\SE\Source\" -I "C:\Texas
+//        Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\ZMain\TI2530ZNP\" -I "C:\Texas
+//        Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\hal\include\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\hal\target\CC2530ZNP\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\mac\include\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\mac\high_level\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\mac\low_level\srf04\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\mac\low_level\srf04\single_chip\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\mt\" -I
+//        "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\osal\include\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\services\saddr\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\services\sdata\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\stack\af\" -I
+//        "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\stack\nwk\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\stack\sapi\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\stack\sec\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\stack\sys\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\stack\zcl\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\stack\zdo\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\zmac\" -I
+//        "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\zmac\f8w\"
+//        -Ohz --require_prototypes
+//    List file          =  
+//        C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\CC2530-Debug\List\OSAL_Memory.s51
+//
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME OSAL_Memory
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?V0
+        EXTERN ?V1
+        EXTERN ?V2
+        EXTERN ?V3
+        EXTERN ?V4
+        EXTERN ?V5
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN __INIT_XDATA_I
+        EXTERN __INIT_XDATA_Z
+
+        PUBLIC `??osal_mem_alloc::?relay`
+        FUNCTION `??osal_mem_alloc::?relay`,0203H
+        PUBLIC `??osal_mem_free::?relay`
+        FUNCTION `??osal_mem_free::?relay`,0203H
+        PUBLIC `??osal_mem_init::?relay`
+        FUNCTION `??osal_mem_init::?relay`,0203H
+        PUBLIC `??osal_mem_kick::?relay`
+        FUNCTION `??osal_mem_kick::?relay`,0203H
+        PUBWEAK _A_IEN0
+        PUBLIC osal_mem_alloc
+        FUNCTION osal_mem_alloc,0a1203H
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME XSTACK, 14, STACK
+        PUBLIC osal_mem_free
+        FUNCTION osal_mem_free,0a1203H
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC osal_mem_init
+        FUNCTION osal_mem_init,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC osal_mem_kick
+        FUNCTION osal_mem_kick,0a1203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource V8:8, V9:8, V10:8, V11:8, V12:8, V13:8, V14:8, V15:8, SP:8
+          CFI Resource PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI V8 SameValue
+          CFI V9 SameValue
+          CFI V10 SameValue
+          CFI V11 SameValue
+          CFI V12 SameValue
+          CFI V13 SameValue
+          CFI V14 SameValue
+          CFI V15 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-2
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B SameValue
+          CFI A SameValue
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI V8 SameValue
+          CFI V9 SameValue
+          CFI V10 SameValue
+          CFI V11 SameValue
+          CFI V12 SameValue
+          CFI V13 SameValue
+          CFI V14 SameValue
+          CFI V15 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT SameValue
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon1
+        
+halAssertHandler    SYMBOL "halAssertHandler"
+`??halAssertHandler::?relay` SYMBOL "?relay", halAssertHandler
+osal_memset         SYMBOL "osal_memset"
+`??osal_memset::?relay` SYMBOL "?relay", osal_memset
+osal_mem_alloc      SYMBOL "osal_mem_alloc"
+`??osal_mem_alloc::?relay` SYMBOL "?relay", osal_mem_alloc
+osal_mem_free       SYMBOL "osal_mem_free"
+`??osal_mem_free::?relay` SYMBOL "?relay", osal_mem_free
+osal_mem_init       SYMBOL "osal_mem_init"
+`??osal_mem_init::?relay` SYMBOL "?relay", osal_mem_init
+osal_mem_kick       SYMBOL "osal_mem_kick"
+`??osal_mem_kick::?relay` SYMBOL "?relay", osal_mem_kick
+
+        EXTERN `??halAssertHandler::?relay`
+        FUNCTION `??halAssertHandler::?relay`,00H
+        EXTERN `??osal_memset::?relay`
+        FUNCTION `??osal_memset::?relay`,00H
+        EXTERN halAssertHandler
+        FUNCTION halAssertHandler,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN osal_memset
+        FUNCTION osal_memset,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 14, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+
+// C:\Texas Instruments\Z-Stack Mesh 1.0.0\Components\osal\common\OSAL_Memory.c
+//    1 /**************************************************************************************************
+//    2   Filename:       OSAL_Memory.c
+//    3   Revised:        $Date: 2013-03-14 17:58:51 -0700 (Thu, 14 Mar 2013) $
+//    4   Revision:       $Revision: 33490 $
+//    5 
+//    6   Description:    OSAL Heap Memory management functions. There is an Application Note that
+//    7                   should be read before studying and/or modifying this module:
+//    8                   SWRA204 "Heap Memory Management"
+//    9 
+//   10   Copyright 2004-2010 Texas Instruments Incorporated. All rights reserved.
+//   11 
+//   12   IMPORTANT: Your use of this Software is limited to those specific rights
+//   13   granted under the terms of a software license agreement between the user
+//   14   who downloaded the software, his/her employer (which must be your employer)
+//   15   and Texas Instruments Incorporated (the "License").  You may not use this
+//   16   Software unless you agree to abide by the terms of the License. The License
+//   17   limits your use, and you acknowledge, that the Software may not be modified,
+//   18   copied or distributed unless embedded on a Texas Instruments microcontroller
+//   19   or used solely and exclusively in conjunction with a Texas Instruments radio
+//   20   frequency transceiver, which is integrated into your product.  Other than for
+//   21   the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   22   works of, modify, distribute, perform, display or sell this Software and/or
+//   23   its documentation for any purpose.
+//   24 
+//   25   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   26   PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   27   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   28   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   29   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   30   NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   31   LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   32   INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   33   OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   34   OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   35   (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   36 
+//   37   Should you have any questions regarding your right to use this Software,
+//   38   contact Texas Instruments Incorporated at www.TI.com.
+//   39 **************************************************************************************************/
+//   40 
+//   41 /* ------------------------------------------------------------------------------------------------
+//   42  *                                          Includes
+//   43  * ------------------------------------------------------------------------------------------------
+//   44  */
+//   45 
+//   46 #include "comdef.h"
+//   47 #include "OSAL.h"
+//   48 #include "OSAL_Memory.h"
+//   49 #include "OnBoard.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,0a8H
+// union <unnamed> volatile __sfr _A_IEN0
+_A_IEN0:
+        DATA8
+        DS 1
+//   50 #include "hal_mcu.h"
+//   51 #include "hal_assert.h"
+//   52 
+//   53 /* ------------------------------------------------------------------------------------------------
+//   54  *                                           Constants
+//   55  * ------------------------------------------------------------------------------------------------
+//   56  */
+//   57 
+//   58 #define OSALMEM_IN_USE             0x8000
+//   59 #if (MAXMEMHEAP & OSALMEM_IN_USE)
+//   60 #error MAXMEMHEAP is too big to manage!
+//   61 #endif
+//   62 
+//   63 #define OSALMEM_HDRSZ              sizeof(osalMemHdr_t)
+//   64 
+//   65 // Round a value up to the ceiling of OSALMEM_HDRSZ for critical dependencies on even multiples.
+//   66 #define OSALMEM_ROUND(X)       ((((X) + OSALMEM_HDRSZ - 1) / OSALMEM_HDRSZ) * OSALMEM_HDRSZ)
+//   67 
+//   68 /* Minimum wasted bytes to justify splitting a block before allocation.
+//   69  * Adjust accordingly to attempt to balance the tradeoff of wasted space and runtime throughput
+//   70  * spent splitting blocks into sizes that may not be practically usable when sandwiched between
+//   71  * two blocks in use (and thereby not able to be coalesced.)
+//   72  * Ensure that this size is an even multiple of OSALMEM_HDRSZ.
+//   73  */
+//   74 #if !defined OSALMEM_MIN_BLKSZ
+//   75 #define OSALMEM_MIN_BLKSZ         (OSALMEM_ROUND((OSALMEM_HDRSZ * 2)))
+//   76 #endif
+//   77 
+//   78 #if !defined OSALMEM_LL_BLKSZ
+//   79 #if defined NONWK
+//   80 #define OSALMEM_LL_BLKSZ          (OSALMEM_ROUND(6) + (1 * OSALMEM_HDRSZ))
+//   81 #else
+//   82 /*
+//   83  * Profiling the sample apps with default settings shows the following long-lived allocations
+//   84  * which should live at the bottom of the small-block bucket so that they are never iterated over
+//   85  * by osal_mem_alloc/free(), nor ever considered for coalescing, etc. This saves significant
+//   86  * run-time throughput (on 8051 SOC if not also MSP). This is dynamic "dead space" and is not
+//   87  * available to the small-block bucket heap.
+//   88  *
+//   89  * Adjust this size accordingly to accomodate application-specific changes including changing the
+//   90  * size of long-lived objects profiled by sample apps and long-lived objects added by application.
+//   91  */
+//   92 #if defined ZCL_KEY_ESTABLISH     // Attempt to capture worst-case for SE sample apps.
+//   93 #define OSALMEM_LL_BLKSZ          (OSALMEM_ROUND(526) + (32 * OSALMEM_HDRSZ))
+//   94 #elif defined TC_LINKKEY_JOIN
+//   95 #define OSALMEM_LL_BLKSZ          (OSALMEM_ROUND(454) + (21 * OSALMEM_HDRSZ))
+//   96 #elif ((defined SECURE) && (SECURE != 0))
+//   97 #define OSALMEM_LL_BLKSZ          (OSALMEM_ROUND(418) + (19 * OSALMEM_HDRSZ))
+//   98 #else
+//   99 #define OSALMEM_LL_BLKSZ          (OSALMEM_ROUND(417) + (19 * OSALMEM_HDRSZ))
+//  100 #endif
+//  101 #endif
+//  102 #endif
+//  103 
+//  104 /* Adjust accordingly to attempt to accomodate the block sizes of the vast majority of
+//  105  * very high frequency allocations/frees by profiling the system runtime.
+//  106  * This default of 16 accomodates the OSAL timers block, osalTimerRec_t, and many others.
+//  107  * Ensure that this size is an even multiple of OSALMEM_MIN_BLKSZ for run-time efficiency.
+//  108  */
+//  109 #if !defined OSALMEM_SMALL_BLKSZ
+//  110 #define OSALMEM_SMALL_BLKSZ       (OSALMEM_ROUND(16))
+//  111 #endif
+//  112 #if !defined OSALMEM_SMALL_BLKCNT
+//  113 #define OSALMEM_SMALL_BLKCNT       8
+//  114 #endif
+//  115 
+//  116 /*
+//  117  * These numbers setup the size of the small-block bucket which is reserved at the front of the
+//  118  * heap for allocations of OSALMEM_SMALL_BLKSZ or smaller.
+//  119  */
+//  120 
+//  121 // Size of the heap bucket reserved for small block-sized allocations.
+//  122 // Adjust accordingly to attempt to accomodate the vast majority of very high frequency operations.
+//  123 #define OSALMEM_SMALLBLK_BUCKET  ((OSALMEM_SMALL_BLKSZ * OSALMEM_SMALL_BLKCNT) + OSALMEM_LL_BLKSZ)
+//  124 // Index of the first available osalMemHdr_t after the small-block heap which will be set in-use in
+//  125 // order to prevent the small-block bucket from being coalesced with the wilderness.
+//  126 #define OSALMEM_SMALLBLK_HDRCNT   (OSALMEM_SMALLBLK_BUCKET / OSALMEM_HDRSZ)
+//  127 // Index of the first available osalMemHdr_t after the small-block heap which will be set in-use in
+//  128 #define OSALMEM_BIGBLK_IDX        (OSALMEM_SMALLBLK_HDRCNT + 1)
+//  129 // The size of the wilderness after losing the small-block heap, the wasted header to block the
+//  130 // small-block heap from being coalesced, and the wasted header to mark the end of the heap.
+//  131 #define OSALMEM_BIGBLK_SZ         (MAXMEMHEAP - OSALMEM_SMALLBLK_BUCKET - OSALMEM_HDRSZ*2)
+//  132 // Index of the last available osalMemHdr_t at the end of the heap which will be set to zero for
+//  133 // fast comparisons with zero to determine the end of the heap.
+//  134 #define OSALMEM_LASTBLK_IDX      ((MAXMEMHEAP / OSALMEM_HDRSZ) - 1)
+//  135 
+//  136 // For information about memory profiling, refer to SWRA204 "Heap Memory Management", section 1.5.
+//  137 #if !defined OSALMEM_PROFILER
+//  138 #define OSALMEM_PROFILER           TRUE  // Enable/disable the memory usage profiling buckets.
+//  139 #endif
+//  140 #if !defined OSALMEM_PROFILER_LL
+//  141 #define OSALMEM_PROFILER_LL        FALSE  // Special profiling of the Long-Lived bucket.
+//  142 #endif
+//  143 
+//  144 #if OSALMEM_PROFILER
+//  145 #define OSALMEM_INIT              'X'
+//  146 #define OSALMEM_ALOC              'A'
+//  147 #define OSALMEM_REIN              'F'
+//  148 #endif
+//  149 
+//  150 /* ------------------------------------------------------------------------------------------------
+//  151  *                                           Typedefs
+//  152  * ------------------------------------------------------------------------------------------------
+//  153  */
+//  154 
+//  155 typedef struct {
+//  156   // The 15 LSB's of 'val' indicate the total item size, including the header, in 8-bit bytes.
+//  157   unsigned len : 15;
+//  158   // The 1 MSB of 'val' is used as a boolean to indicate in-use or freed.
+//  159   unsigned inUse : 1;
+//  160 } osalMemHdrHdr_t;
+//  161 
+//  162 typedef union {
+//  163   /* Dummy variable so compiler forces structure to alignment of largest element while not wasting
+//  164    * space on targets when the halDataAlign_t is smaller than a UINT16.
+//  165    */
+//  166   halDataAlign_t alignDummy;
+//  167   uint16 val;
+//  168   osalMemHdrHdr_t hdr;
+//  169 } osalMemHdr_t;
+//  170 
+//  171 /* ------------------------------------------------------------------------------------------------
+//  172  *                                           Local Variables
+//  173  * ------------------------------------------------------------------------------------------------
+//  174  */
+//  175 
+//  176 #if !defined ( ZBIT )
+
+        RSEG XDATA_N:XDATA:REORDER:NOROOT(0)
+        DATA8
+//  177 static __no_init osalMemHdr_t theHeap[MAXMEMHEAP / OSALMEM_HDRSZ];
+theHeap:
+        DS 1000
+
+        RSEG XDATA_N:XDATA:REORDER:NOROOT(0)
+        DATA16
+//  178 static __no_init osalMemHdr_t *ff1;  // First free block in the small-block bucket.
+ff1:
+        DS 2
+//  179 #else
+//  180 static osalMemHdr_t theHeap[MAXMEMHEAP / OSALMEM_HDRSZ];
+//  181 static osalMemHdr_t *ff1;  // First free block in the small-block bucket.
+//  182 #endif
+//  183 
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//  184 static uint8 osalMemStat;            // Discrete status flags: 0x01 = kicked.
+osalMemStat:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+//  185 
+//  186 #if OSALMEM_METRICS
+//  187 static uint16 blkMax;  // Max cnt of all blocks ever seen at once.
+//  188 static uint16 blkCnt;  // Current cnt of all blocks.
+//  189 static uint16 blkFree; // Current cnt of free blocks.
+//  190 static uint16 memAlo;  // Current total memory allocated.
+//  191 static uint16 memMax;  // Max total memory ever allocated at once.
+//  192 #endif
+//  193 
+//  194 #if OSALMEM_PROFILER
+//  195 #define OSALMEM_PROMAX  8
+//  196 /* The profiling buckets must differ by at least OSALMEM_MIN_BLKSZ; the
+//  197  * last bucket must equal the max alloc size. Set the bucket sizes to
+//  198  * whatever sizes necessary to show how your application is using memory.
+//  199  */
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  200 static uint16 proCnt[OSALMEM_PROMAX] = {
+proCnt:
+        DATA8
+        DS 16
+        REQUIRE `?<Initializer for proCnt>`
+        REQUIRE __INIT_XDATA_I
+//  201 OSALMEM_SMALL_BLKSZ, 48, 112, 176, 192, 224, 256, 65535 };
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//  202 static uint16 proCur[OSALMEM_PROMAX] = { 0 };
+proCur:
+        DS 16
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//  203 static uint16 proMax[OSALMEM_PROMAX] = { 0 };
+proMax:
+        DS 16
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//  204 static uint16 proTot[OSALMEM_PROMAX] = { 0 };
+proTot:
+        DS 16
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//  205 static uint16 proSmallBlkMiss;
+proSmallBlkMiss:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+//  206 #endif
+//  207 
+//  208 /* ------------------------------------------------------------------------------------------------
+//  209  *                                           Global Variables
+//  210  * ------------------------------------------------------------------------------------------------
+//  211  */
+//  212 
+//  213 #ifdef DPRINTF_HEAPTRACE
+//  214 extern int dprintf(const char *fmt, ...);
+//  215 #endif /* DPRINTF_HEAPTRACE */
+//  216 
+//  217 /**************************************************************************************************
+//  218  * @fn          osal_mem_init
+//  219  *
+//  220  * @brief       This function is the OSAL heap memory management initialization callback.
+//  221  *
+//  222  * input parameters
+//  223  *
+//  224  * None.
+//  225  *
+//  226  * output parameters
+//  227  *
+//  228  * None.
+//  229  *
+//  230  * @return      None.
+//  231  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  232 void osal_mem_init(void)
+osal_mem_init:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function osal_mem_init
+        CODE
+//  233 {
+        FUNCALL osal_mem_init, osal_memset
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH    DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH    DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  234   HAL_ASSERT(((OSALMEM_MIN_BLKSZ % OSALMEM_HDRSZ) == 0));
+//  235   HAL_ASSERT(((OSALMEM_LL_BLKSZ % OSALMEM_HDRSZ) == 0));
+//  236   HAL_ASSERT(((OSALMEM_SMALL_BLKSZ % OSALMEM_HDRSZ) == 0));
+//  237 
+//  238 #if OSALMEM_PROFILER
+//  239   (void)osal_memset(theHeap, OSALMEM_INIT, MAXMEMHEAP);
+        ; Setup parameters for call to function osal_memset
+        MOV     R4,#-0x18
+        MOV     R5,#0x3
+        MOV     R1,#0x58
+        MOV     R2,#theHeap & 0xff
+        MOV     R3,#(theHeap >> 8) & 0xff
+        LCALL   `??osal_memset::?relay`; Banked call to: osal_memset
+//  240 #endif
+//  241 
+//  242   // Setup a NULL block at the end of the heap for fast comparisons with zero.
+//  243   theHeap[OSALMEM_LASTBLK_IDX].val = 0;
+        MOV     DPTR,#theHeap + 998
+        CLR     A
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOVX    @DPTR,A
+//  244 
+//  245   // Setup the small-block bucket.
+//  246   ff1 = theHeap;
+        MOV     DPTR,#ff1
+        MOV     A,#theHeap & 0xff
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,#(theHeap >> 8) & 0xff
+        MOVX    @DPTR,A
+//  247   ff1->val = OSALMEM_SMALLBLK_BUCKET;                   // Set 'len' & clear 'inUse' field.
+        MOV     DPTR,#theHeap
+        MOV     A,#0x48
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,#0x2
+        MOVX    @DPTR,A
+//  248   // Set 'len' & 'inUse' fields - this is a 'zero data bytes' lifetime allocation to block the
+//  249   // small-block bucket from ever being coalesced with the wilderness.
+//  250   theHeap[OSALMEM_SMALLBLK_HDRCNT].val = (OSALMEM_HDRSZ | OSALMEM_IN_USE);
+        MOV     DPTR,#theHeap + 584
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,#-0x80
+        MOVX    @DPTR,A
+//  251 
+//  252   // Setup the wilderness.
+//  253   theHeap[OSALMEM_BIGBLK_IDX].val = OSALMEM_BIGBLK_SZ;  // Set 'len' & clear 'inUse' field.
+        INC     DPTR
+        MOV     A,#-0x64
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,#0x1
+        MOVX    @DPTR,A
+//  254 
+//  255 #if ( OSALMEM_METRICS )
+//  256   /* Start with the small-block bucket and the wilderness - don't count the
+//  257    * end-of-heap NULL block nor the end-of-small-block NULL block.
+//  258    */
+//  259   blkCnt = blkFree = 2;
+//  260 #endif
+//  261 }
+        POP     DPH
+          CFI DPH0 SameValue
+          CFI CFA_SP SP+-4
+        POP     DPL
+          CFI DPL0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock0
+//  262 
+//  263 /**************************************************************************************************
+//  264  * @fn          osal_mem_kick
+//  265  *
+//  266  * @brief       This function is the OSAL task initialization callback.
+//  267  * @brief       Kick the ff1 pointer out past the long-lived OSAL Task blocks.
+//  268  *              Invoke this once after all long-lived blocks have been allocated -
+//  269  *              presently at the end of osal_init_system().
+//  270  *
+//  271  * input parameters
+//  272  *
+//  273  * None.
+//  274  *
+//  275  * output parameters
+//  276  *
+//  277  * None.
+//  278  *
+//  279  * @return      None.
+//  280  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  281 void osal_mem_kick(void)
+osal_mem_kick:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function osal_mem_kick
+        CODE
+//  282 {
+        FUNCALL osal_mem_kick, osal_mem_alloc
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL osal_mem_kick, halAssertHandler
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL osal_mem_kick, osal_mem_free
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV     A,#-0xa
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+        ; Saved register size: 10
+        ; Auto size: 0
+//  283   halIntState_t intState;
+//  284   osalMemHdr_t *tmp = osal_mem_alloc(1);
+        ; Setup parameters for call to function osal_mem_alloc
+        MOV     R2,#0x1
+        MOV     R3,#0x0
+        LCALL   `??osal_mem_alloc::?relay`; Banked call to: osal_mem_alloc
+        MOV     ?V0,R2
+        MOV     ?V1,R3
+        MOV     R6,?V0
+        MOV     R7,?V1
+//  285 
+//  286   HAL_ASSERT((tmp != NULL));
+        MOV     A,R6
+        ORL     A,R7
+        JNZ     ??osal_mem_kick_0
+        ; Setup parameters for call to function halAssertHandler
+        LCALL   `??halAssertHandler::?relay`; Banked call to: halAssertHandler
+//  287   HAL_ENTER_CRITICAL_SECTION(intState);  // Hold off interrupts.
+??osal_mem_kick_0:
+        MOV     ?V0,0xa8+0x0
+        CLR     0xa8.7
+//  288 
+//  289   /* All long-lived allocations have filled the LL block reserved in the small-block bucket.
+//  290    * Set 'osalMemStat' so searching for memory in this bucket from here onward will only be done
+//  291    * for sizes meeting the OSALMEM_SMALL_BLKSZ criteria.
+//  292    */
+//  293   ff1 = tmp - 1;       // Set 'ff1' to point to the first available memory after the LL block.
+        MOV     A,R6
+        ADD     A,#-0x2
+        MOV     R0,A
+        MOV     A,R7
+        ADDC    A,#-0x1
+        MOV     R1,A
+        MOV     DPTR,#ff1
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//  294   osal_mem_free(tmp);
+        ; Setup parameters for call to function osal_mem_free
+        MOV     A,R6
+        MOV     R2,A
+        MOV     A,R7
+        MOV     R3,A
+        LCALL   `??osal_mem_free::?relay`; Banked call to: osal_mem_free
+//  295   osalMemStat = 0x01;  // Set 'osalMemStat' after the free because it enables memory profiling.
+        MOV     DPTR,#osalMemStat
+        MOV     A,#0x1
+        MOVX    @DPTR,A
+//  296 
+//  297   HAL_EXIT_CRITICAL_SECTION(intState);  // Re-enable interrupts.
+        MOV     A,?V0
+        MOV     C,0xE0 /* A   */.7
+        CLR     A
+        RLC     A
+        MOV     R0,A
+        MOV     A,?V0
+        MOV     C,0xE0 /* A   */.7
+        MOV     0xa8.7,C
+//  298 }
+        MOV     R7,#0x2
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock1
+        REQUIRE _A_IEN0
+//  299 
+//  300 /**************************************************************************************************
+//  301  * @fn          osal_mem_alloc
+//  302  *
+//  303  * @brief       This function implements the OSAL dynamic memory allocation functionality.
+//  304  *
+//  305  * input parameters
+//  306  *
+//  307  * @param size - the number of bytes to allocate from the HEAP.
+//  308  *
+//  309  * output parameters
+//  310  *
+//  311  * None.
+//  312  *
+//  313  * @return      None.
+//  314  */
+//  315 #ifdef DPRINTF_OSALHEAPTRACE
+//  316 void *osal_mem_alloc_dbg( uint16 size, const char *fname, unsigned lnum )
+//  317 #else /* DPRINTF_OSALHEAPTRACE */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  318 void *osal_mem_alloc( uint16 size )
+osal_mem_alloc:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function osal_mem_alloc
+        CODE
+//  319 #endif /* DPRINTF_OSALHEAPTRACE */
+//  320 {
+        FUNCALL osal_mem_alloc, osal_memset
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 14, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 14, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        MOV     A,#-0xe
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 14)
+        ; Saved register size: 14
+        ; Auto size: 0
+//  321   osalMemHdr_t *prev = NULL;
+        MOV     R0,#0x0
+        MOV     R1,#0x0
+//  322   osalMemHdr_t *hdr;
+//  323   halIntState_t intState;
+//  324   uint8 coal = 0;
+        MOV     R4,#0x0
+//  325 
+//  326   size += OSALMEM_HDRSZ;
+        MOV     A,R2
+        ADD     A,#0x2
+        MOV     R2,A
+        CLR     A
+        ADDC    A,R3
+        MOV     R3,A
+//  327 
+//  328   // Calculate required bytes to add to 'size' to align to halDataAlign_t.
+//  329   if ( sizeof( halDataAlign_t ) == 2 )
+//  330   {
+//  331     size += (size & 0x01);
+//  332   }
+//  333   else if ( sizeof( halDataAlign_t ) != 1 )
+//  334   {
+//  335     const uint8 mod = size % sizeof( halDataAlign_t );
+//  336 
+//  337     if ( mod != 0 )
+//  338     {
+//  339       size += (sizeof( halDataAlign_t ) - mod);
+//  340     }
+//  341   }
+//  342 
+//  343   HAL_ENTER_CRITICAL_SECTION( intState );  // Hold off interrupts.
+        MOV     C,0xa8.7
+        CLR     A
+        RLC     A
+        MOV     ?V0,A
+        CLR     0xa8.7
+//  344 
+//  345   // Smaller allocations are first attempted in the small-block bucket, and all long-lived
+//  346   // allocations are channeled into the LL block reserved within this bucket.
+//  347   if ((osalMemStat == 0) || (size <= OSALMEM_SMALL_BLKSZ))
+        MOV     DPTR,#osalMemStat
+        MOVX    A,@DPTR
+        JZ      ??osal_mem_alloc_0
+        MOV     A,R2
+        SUBB    A,#0x11
+        MOV     A,R3
+        SUBB    A,#0x0
+        JNC     ??osal_mem_alloc_1
+//  348   {
+//  349     hdr = ff1;
+??osal_mem_alloc_0:
+        MOV     DPTR,#ff1
+        MOVX    A,@DPTR
+        MOV     R6,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R7,A
+        SJMP    ??osal_mem_alloc_2
+//  350   }
+//  351   else
+//  352   {
+//  353     hdr = (theHeap + OSALMEM_BIGBLK_IDX);
+??osal_mem_alloc_1:
+        MOV     R6,#(theHeap + 74) & 0xff
+        MOV     R7,#((theHeap + 586) >> 8) & 0xff
+//  354   }
+//  355 
+//  356   do
+//  357   {
+//  358     if ( hdr->hdr.inUse )
+??osal_mem_alloc_2:
+        MOV     DPL,R6
+        MOV     DPH,R7
+        INC     DPTR
+        MOVX    A,@DPTR
+        ANL     A,#0x80
+        JZ      ??osal_mem_alloc_3
+//  359     {
+//  360       coal = 0;
+        MOV     R4,#0x0
+        LJMP    ??osal_mem_alloc_4 & 0xFFFF
+//  361     }
+//  362     else
+//  363     {
+//  364       if ( coal != 0 )
+??osal_mem_alloc_3:
+        MOV     A,R4
+        MOV     C,0xE0 /* A   */.0
+        JNC     ??osal_mem_alloc_5
+//  365       {
+//  366 #if ( OSALMEM_METRICS )
+//  367         blkCnt--;
+//  368         blkFree--;
+//  369 #endif
+//  370 
+//  371         prev->hdr.len += hdr->hdr.len;
+        MOV     DPL,R0
+        MOV     DPH,R1
+        MOVX    A,@DPTR
+        MOV     ?V2,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     ?V3,A
+        ANL     A,#0x80
+        MOV     ?V5,A
+        MOV     DPL,R6
+        MOV     DPH,R7
+        MOVX    A,@DPTR
+        ADD     A,?V2
+        MOV     ?V2,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        ADDC    A,?V3
+        ANL     A,#0x7f
+        MOV     ?V3,A
+        MOV     A,?V5
+        ORL     A,?V3
+        MOV     ?V3,A
+        MOV     DPL,R0
+        MOV     DPH,R1
+        MOV     A,?V2
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,?V3
+        MOVX    @DPTR,A
+//  372 
+//  373         if ( prev->hdr.len >= size )
+        ANL     A,#0x7f
+        MOV     ?V3,A
+        CLR     C
+        MOV     A,?V2
+        SUBB    A,R2
+        MOV     A,?V3
+        SUBB    A,R3
+        JC      ??osal_mem_alloc_4
+//  374         {
+//  375           hdr = prev;
+        MOV     A,R0
+        MOV     R6,A
+        MOV     A,R1
+        MOV     R7,A
+//  376           break;
+//  377         }
+//  378       }
+//  379       else
+//  380       {
+//  381         if ( hdr->hdr.len >= size )
+//  382         {
+//  383           break;
+//  384         }
+//  385 
+//  386         coal = 1;
+//  387         prev = hdr;
+//  388       }
+//  389     }
+//  390 
+//  391     hdr = (osalMemHdr_t *)((uint8 *)hdr + hdr->hdr.len);
+//  392 
+//  393     if ( hdr->val == 0 )
+//  394     {
+//  395       hdr = NULL;
+//  396       break;
+//  397     }
+//  398   } while (1);
+//  399 
+//  400   if ( hdr != NULL )
+??osal_mem_alloc_6:
+        MOV     A,R6
+        ORL     A,R7
+        JNZ     $+5
+        LJMP    ??osal_mem_alloc_7 & 0xFFFF
+//  401   {
+//  402     uint16 tmp = hdr->hdr.len - size;
+        LCALL   ?Subroutine5 & 0xFFFF
+??CrossCallReturnLabel_11:
+        MOV     A,R0
+        CLR     C
+        SUBB    A,R2
+        MOV     R0,A
+        MOV     A,R1
+        SUBB    A,R3
+        MOV     R1,A
+//  403 
+//  404     // Determine whether the threshold for splitting is met.
+//  405     if ( tmp >= OSALMEM_MIN_BLKSZ )
+        CLR     C
+        MOV     A,R0
+        SUBB    A,#0x4
+        MOV     A,R1
+        SUBB    A,#0x0
+        JC      ??osal_mem_alloc_8
+//  406     {
+//  407       // Split the block before allocating it.
+//  408       osalMemHdr_t *next = (osalMemHdr_t *)((uint8 *)hdr + size);
+//  409       next->val = tmp;                     // Set 'len' & clear 'inUse' field.
+        MOV     A,R6
+        ADD     A,R2
+        MOV     DPL,A
+        MOV     A,R7
+        ADDC    A,R3
+        MOV     DPH,A
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//  410       hdr->val = (size | OSALMEM_IN_USE);  // Set 'len' & 'inUse' field.
+        MOV     A,R2
+        MOV     R0,A
+        MOV     A,R3
+        ORL     A,#0x80
+        MOV     R1,A
+        MOV     DPL,R6
+        MOV     DPH,R7
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        SJMP    ??osal_mem_alloc_9
+//  411 
+//  412 #if ( OSALMEM_METRICS )
+//  413       blkCnt++;
+//  414       if ( blkMax < blkCnt )
+//  415       {
+//  416         blkMax = blkCnt;
+//  417       }
+//  418       memAlo += size;
+//  419 #endif
+//  420     }
+??osal_mem_alloc_5:
+        LCALL   ?Subroutine4 & 0xFFFF
+??CrossCallReturnLabel_9:
+        SUBB    A,R2
+        MOV     A,R1
+        SUBB    A,R3
+        JNC     ??osal_mem_alloc_6
+        MOV     R4,#0x1
+        MOV     A,R6
+        MOV     R0,A
+        MOV     A,R7
+        MOV     R1,A
+??osal_mem_alloc_4:
+        MOV     DPL,R6
+        MOV     DPH,R7
+        MOVX    A,@DPTR
+        MOV     ?V2,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        ANL     A,#0x7f
+        MOV     ?V3,A
+        MOV     A,R6
+        ADD     A,?V2
+        MOV     R6,A
+        MOV     A,R7
+        ADDC    A,?V3
+        MOV     R7,A
+        MOV     DPL,R6
+        MOV     DPH,R7
+        MOVX    A,@DPTR
+        MOV     ?V2,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     ?V3,A
+        MOV     A,?V2
+        ORL     A,?V3
+        JZ      $+5
+        LJMP    ??osal_mem_alloc_2 & 0xFFFF
+        MOV     R6,#0x0
+        MOV     R7,#0x0
+        LJMP    ??osal_mem_alloc_7 & 0xFFFF
+//  421     else
+//  422     {
+//  423 #if ( OSALMEM_METRICS )
+//  424       memAlo += hdr->hdr.len;
+//  425       blkFree--;
+//  426 #endif
+//  427 
+//  428       hdr->hdr.inUse = TRUE;
+??osal_mem_alloc_8:
+        MOV     DPL,R6
+        MOV     DPH,R7
+        INC     DPTR
+        MOVX    A,@DPTR
+        ORL     A,#0x80
+??osal_mem_alloc_9:
+        MOVX    @DPTR,A
+//  429     }
+//  430 
+//  431 #if ( OSALMEM_METRICS )
+//  432     if ( memMax < memAlo )
+//  433     {
+//  434       memMax = memAlo;
+//  435     }
+//  436 #endif
+//  437 
+//  438 #if ( OSALMEM_PROFILER )
+//  439 #if !OSALMEM_PROFILER_LL
+//  440     if (osalMemStat != 0)  // Don't profile until after the LL block is filled.
+        MOV     DPTR,#osalMemStat
+        MOVX    A,@DPTR
+        JNZ     $+5
+        LJMP    ??CrossCallReturnLabel_2 & 0xFFFF
+//  441 #endif
+//  442     {
+//  443       uint8 idx;
+//  444 
+//  445       for ( idx = 0; idx < OSALMEM_PROMAX; idx++ )
+        MOV     R2,#0x0
+//  446       {
+//  447         if ( hdr->hdr.len <= proCnt[idx] )
+??osal_mem_alloc_10:
+        LCALL   ?Subroutine2 & 0xFFFF
+//  448         {
+//  449           break;
+//  450         }
+//  451       }
+??CrossCallReturnLabel_5:
+        PUSH    DPL
+          CFI CFA_SP SP+-1
+        PUSH    DPH
+          CFI CFA_SP SP+-2
+        LCALL   ?Subroutine5 & 0xFFFF
+??CrossCallReturnLabel_12:
+        POP     DPH
+          CFI CFA_SP SP+-1
+        POP     DPL
+          CFI CFA_SP SP+0
+        CLR     C
+        MOVX    A,@DPTR
+        SUBB    A,R0
+        INC     DPTR
+        MOVX    A,@DPTR
+        SUBB    A,R1
+        JNC     ??osal_mem_alloc_11
+        INC     R2
+        MOV     A,R2
+        CLR     C
+        SUBB    A,#0x8
+        JC      ??osal_mem_alloc_10
+//  452       proCur[idx]++;
+??osal_mem_alloc_11:
+        LCALL   ?Subroutine8 & 0xFFFF
+??CrossCallReturnLabel_20:
+        MOV     R4,A
+        MOV     A,#(proCur >> 8) & 0xff
+        ADDC    A,R1
+        MOV     R5,A
+        MOV     DPL,R4
+        MOV     DPH,R5
+        LCALL   ?Subroutine0 & 0xFFFF
+//  453       if ( proMax[idx] < proCur[idx] )
+??CrossCallReturnLabel_0:
+        LCALL   ?Subroutine6 & 0xFFFF
+??CrossCallReturnLabel_15:
+        PUSH    DPL
+          CFI CFA_SP SP+-1
+        PUSH    DPH
+          CFI CFA_SP SP+-2
+        MOV     DPL,R4
+        MOV     DPH,R5
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R1,A
+        POP     DPH
+          CFI CFA_SP SP+-1
+        POP     DPL
+          CFI CFA_SP SP+0
+        CLR     C
+        MOVX    A,@DPTR
+        SUBB    A,R0
+        INC     DPTR
+        MOVX    A,@DPTR
+        SUBB    A,R1
+        JNC     ??osal_mem_alloc_12
+//  454       {
+//  455         proMax[idx] = proCur[idx];
+        LCALL   ?Subroutine1 & 0xFFFF
+//  456       }
+??CrossCallReturnLabel_3:
+        MOV     R4,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R5,A
+        LCALL   ?Subroutine6 & 0xFFFF
+??CrossCallReturnLabel_16:
+        MOV     A,R4
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R5
+        MOVX    @DPTR,A
+//  457       proTot[idx]++;
+??osal_mem_alloc_12:
+        LCALL   ?Subroutine9 & 0xFFFF
+??CrossCallReturnLabel_22:
+        MOV     A,#proTot & 0xff
+        ADD     A,R0
+        MOV     DPL,A
+        MOV     A,#(proTot >> 8) & 0xff
+        ADDC    A,R1
+        MOV     DPH,A
+        LCALL   ?Subroutine0 & 0xFFFF
+//  458 
+//  459       /* A small-block could not be allocated in the small-block bucket.
+//  460        * When this occurs significantly frequently, increase the size of the
+//  461        * bucket in order to restore better worst case run times. Set the first
+//  462        * profiling bucket size in proCnt[] to the small-block bucket size and
+//  463        * divide proSmallBlkMiss by the corresponding proTot[] size to get % miss.
+//  464        * Best worst case time on TrasmitApp was achieved at a 0-15% miss rate
+//  465        * during steady state Tx load, 0% during idle and steady state Rx load.
+//  466        */
+//  467       if ((hdr->hdr.len <= OSALMEM_SMALL_BLKSZ) && (hdr >= (theHeap + OSALMEM_BIGBLK_IDX)))
+??CrossCallReturnLabel_1:
+        LCALL   ?Subroutine4 & 0xFFFF
+??CrossCallReturnLabel_10:
+        SUBB    A,#0x11
+        MOV     A,R1
+        SUBB    A,#0x0
+        JNC     ??CrossCallReturnLabel_2
+        CLR     C
+        MOV     A,R6
+        SUBB    A,#(theHeap + 74) & 0xff
+        MOV     A,R7
+        SUBB    A,#((theHeap + 586) >> 8) & 0xff
+        JC      ??CrossCallReturnLabel_2
+//  468       {
+//  469         proSmallBlkMiss++;
+        MOV     DPTR,#proSmallBlkMiss
+        LCALL   ?Subroutine0 & 0xFFFF
+//  470       }
+//  471     }
+//  472 
+//  473     (void)osal_memset((uint8 *)(hdr+1), OSALMEM_ALOC, (hdr->hdr.len - OSALMEM_HDRSZ));
+??CrossCallReturnLabel_2:
+        ; Setup parameters for call to function osal_memset
+        LCALL   ?Subroutine3 & 0xFFFF
+??CrossCallReturnLabel_7:
+        MOV     R1,#0x41
+        MOV     A,R6
+        ADD     A,#0x2
+        MOV     R2,A
+        CLR     A
+        ADDC    A,R7
+        MOV     R3,A
+        LCALL   `??osal_memset::?relay`; Banked call to: osal_memset
+//  474 #endif
+//  475 
+//  476     if ((osalMemStat != 0) && (ff1 == hdr))
+        MOV     DPTR,#osalMemStat
+        MOVX    A,@DPTR
+        JZ      ??osal_mem_alloc_13
+        MOV     DPTR,#ff1
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R1,A
+        MOV     A,R6
+        XRL     A,R0
+        JNZ     ??osal_mem_alloc_14
+        MOV     A,R7
+        XRL     A,R1
+??osal_mem_alloc_14:
+        JNZ     ??osal_mem_alloc_13
+//  477     {
+//  478       ff1 = (osalMemHdr_t *)((uint8 *)hdr + hdr->hdr.len);
+        LCALL   ?Subroutine5 & 0xFFFF
+//  479     }
+??CrossCallReturnLabel_13:
+        MOV     A,R6
+        ADD     A,R0
+        MOV     R0,A
+        MOV     A,R7
+        ADDC    A,R1
+        MOV     R1,A
+        MOV     DPTR,#ff1
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//  480 
+//  481     hdr++;
+??osal_mem_alloc_13:
+        MOV     A,R6
+        ADD     A,#0x2
+        MOV     R6,A
+        JNC     ??osal_mem_alloc_7
+        INC     R7
+//  482   }
+//  483 
+//  484   HAL_EXIT_CRITICAL_SECTION( intState );  // Re-enable interrupts.
+??osal_mem_alloc_7:
+        MOV     A,?V0
+        MOV     C,0xE0 /* A   */.0
+        MOV     0xa8.7,C
+//  485 
+//  486 #if !defined ( ZBIT )
+//  487 #pragma diag_suppress=Pe767
+//  488   HAL_ASSERT(((halDataAlign_t)hdr % sizeof(halDataAlign_t)) == 0);
+//  489 #pragma diag_default=Pe767
+//  490 #else
+//  491   HAL_ASSERT(((halDataAlign_t)hdr % sizeof(halDataAlign_t)) == 0);
+//  492 #endif
+//  493 #ifdef DPRINTF_OSALHEAPTRACE
+//  494   dprintf("osal_mem_alloc(%u)->%lx:%s:%u\n", size, (unsigned) hdr, fname, lnum);
+//  495 #endif /* DPRINTF_OSALHEAPTRACE */
+//  496   return (void *)hdr;
+        MOV     A,R6
+        MOV     R2,A
+        MOV     A,R7
+        MOV     R3,A
+        MOV     R7,#0x6
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock2
+        REQUIRE _A_IEN0
+//  497 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine6:
+          CFI Block cfiCond3 Using cfiCommon0
+          CFI Function osal_mem_alloc
+          CFI Conditional ??CrossCallReturnLabel_15
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond4 Using cfiCommon0
+          CFI (cfiCond4) Function osal_mem_alloc
+          CFI (cfiCond4) Conditional ??CrossCallReturnLabel_16
+          CFI (cfiCond4) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond4) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond4) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond4) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond4) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond4) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond4) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond4) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond4) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond4) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond4) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond4) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond4) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond4) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond4) CFA_SP SP+-2
+          CFI (cfiCond4) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiPicker5 Using cfiCommon1
+          CFI (cfiPicker5) NoFunction
+          CFI (cfiPicker5) Picker
+        MOV     A,#proMax & 0xff
+        ADD     A,R0
+        MOV     DPL,A
+        MOV     A,#(proMax >> 8) & 0xff
+        ADDC    A,R1
+        MOV     DPH,A
+        RET
+          CFI EndBlock cfiCond3
+          CFI EndBlock cfiCond4
+          CFI EndBlock cfiPicker5
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine4:
+          CFI Block cfiCond6 Using cfiCommon0
+          CFI Function osal_mem_alloc
+          CFI Conditional ??CrossCallReturnLabel_9
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond7 Using cfiCommon0
+          CFI (cfiCond7) Function osal_mem_alloc
+          CFI (cfiCond7) Conditional ??CrossCallReturnLabel_10
+          CFI (cfiCond7) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond7) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond7) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond7) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond7) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond7) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond7) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond7) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond7) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond7) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond7) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond7) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond7) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond7) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond7) CFA_SP SP+-2
+          CFI (cfiCond7) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiPicker8 Using cfiCommon1
+          CFI (cfiPicker8) NoFunction
+          CFI (cfiPicker8) Picker
+        LCALL   ?Subroutine7 & 0xFFFF
+??CrossCallReturnLabel_18:
+        CLR     C
+        MOV     A,R0
+        RET
+          CFI EndBlock cfiCond6
+          CFI EndBlock cfiCond7
+          CFI EndBlock cfiPicker8
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine0:
+          CFI Block cfiCond9 Using cfiCommon0
+          CFI Function osal_mem_alloc
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond10 Using cfiCommon0
+          CFI (cfiCond10) Function osal_mem_alloc
+          CFI (cfiCond10) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond10) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond10) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond10) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond10) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond10) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond10) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond10) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond10) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond10) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond10) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond10) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond10) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond10) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond10) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond10) CFA_SP SP+-2
+          CFI (cfiCond10) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond11 Using cfiCommon0
+          CFI (cfiCond11) Function osal_mem_alloc
+          CFI (cfiCond11) Conditional ??CrossCallReturnLabel_2
+          CFI (cfiCond11) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond11) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond11) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond11) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond11) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond11) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond11) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond11) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond11) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond11) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond11) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond11) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond11) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond11) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond11) CFA_SP SP+-2
+          CFI (cfiCond11) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiPicker12 Using cfiCommon1
+          CFI (cfiPicker12) NoFunction
+          CFI (cfiPicker12) Picker
+        MOVX    A,@DPTR
+        ADD     A,#0x1
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        ADDC    A,#0x0
+        MOVX    @DPTR,A
+        RET
+          CFI EndBlock cfiCond9
+          CFI EndBlock cfiCond10
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiPicker12
+//  498 
+//  499 /**************************************************************************************************
+//  500  * @fn          osal_mem_free
+//  501  *
+//  502  * @brief       This function implements the OSAL dynamic memory de-allocation functionality.
+//  503  *
+//  504  * input parameters
+//  505  *
+//  506  * @param ptr - A valid pointer (i.e. a pointer returned by osal_mem_alloc()) to the memory to free.
+//  507  *
+//  508  * output parameters
+//  509  *
+//  510  * None.
+//  511  *
+//  512  * @return      None.
+//  513  */
+//  514 #ifdef DPRINTF_OSALHEAPTRACE
+//  515 void osal_mem_free_dbg(void *ptr, const char *fname, unsigned lnum)
+//  516 #else /* DPRINTF_OSALHEAPTRACE */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  517 void osal_mem_free(void *ptr)
+osal_mem_free:
+          CFI Block cfiBlock13 Using cfiCommon0
+          CFI Function osal_mem_free
+        CODE
+//  518 #endif /* DPRINTF_OSALHEAPTRACE */
+//  519 {
+        FUNCALL osal_mem_free, halAssertHandler
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL osal_mem_free, halAssertHandler
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL osal_mem_free, osal_memset
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        MOV     A,#-0x9
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+//  520   osalMemHdr_t *hdr = (osalMemHdr_t *)ptr - 1;
+        MOV     A,R2
+        ADD     A,#-0x2
+        MOV     R6,A
+        MOV     A,R3
+        ADDC    A,#-0x1
+        MOV     R7,A
+//  521   halIntState_t intState;
+//  522 
+//  523 #ifdef DPRINTF_OSALHEAPTRACE
+//  524   dprintf("osal_mem_free(%lx):%s:%u\n", (unsigned) ptr, fname, lnum);
+//  525 #endif /* DPRINTF_OSALHEAPTRACE */
+//  526 
+//  527   HAL_ASSERT(((uint8 *)ptr >= (uint8 *)theHeap) && ((uint8 *)ptr < (uint8 *)theHeap+MAXMEMHEAP));
+        CLR     C
+        MOV     A,R2
+        SUBB    A,#theHeap & 0xff
+        MOV     A,R3
+        SUBB    A,#(theHeap >> 8) & 0xff
+        JC      ??osal_mem_free_0
+        CLR     C
+        MOV     A,R2
+        SUBB    A,#(theHeap + 232) & 0xff
+        MOV     A,R3
+        SUBB    A,#((theHeap + 1000) >> 8) & 0xff
+        JC      ??osal_mem_free_1
+??osal_mem_free_0:
+        ; Setup parameters for call to function halAssertHandler
+        LCALL   `??halAssertHandler::?relay`; Banked call to: halAssertHandler
+//  528   HAL_ASSERT(hdr->hdr.inUse);
+??osal_mem_free_1:
+        MOV     DPL,R6
+        MOV     DPH,R7
+        INC     DPTR
+        MOVX    A,@DPTR
+        ANL     A,#0x80
+        JNZ     ??osal_mem_free_2
+        ; Setup parameters for call to function halAssertHandler
+        LCALL   `??halAssertHandler::?relay`; Banked call to: halAssertHandler
+//  529 
+//  530   HAL_ENTER_CRITICAL_SECTION( intState );  // Hold off interrupts.
+??osal_mem_free_2:
+        MOV     C,0xa8.7
+        CLR     A
+        RLC     A
+        MOV     ?V0,A
+        CLR     0xa8.7
+//  531   hdr->hdr.inUse = FALSE;
+        MOV     DPL,R6
+        MOV     DPH,R7
+        INC     DPTR
+        MOVX    A,@DPTR
+        ANL     A,#0x7f
+        MOVX    @DPTR,A
+//  532 
+//  533   if (ff1 > hdr)
+        MOV     DPTR,#ff1
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R1,A
+        MOV     A,R6
+        SUBB    A,R0
+        MOV     A,R7
+        SUBB    A,R1
+        JNC     ??osal_mem_free_3
+//  534   {
+//  535     ff1 = hdr;
+        MOV     A,R6
+        MOV     R0,A
+        MOV     A,R7
+        MOV     R1,A
+        MOV     DPTR,#ff1
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//  536   }
+//  537 
+//  538 #if OSALMEM_PROFILER
+//  539 #if !OSALMEM_PROFILER_LL
+//  540   if (osalMemStat != 0)  // Don't profile until after the LL block is filled.
+??osal_mem_free_3:
+        MOV     DPTR,#osalMemStat
+        MOVX    A,@DPTR
+        JZ      ??osal_mem_free_4
+//  541 #endif
+//  542   {
+//  543     uint8 idx;
+//  544 
+//  545     for (idx = 0; idx < OSALMEM_PROMAX; idx++)
+        MOV     R2,#0x0
+//  546     {
+//  547       if (hdr->hdr.len <= proCnt[idx])
+??osal_mem_free_5:
+        LCALL   ?Subroutine2 & 0xFFFF
+//  548       {
+//  549         break;
+//  550       }
+//  551     }
+??CrossCallReturnLabel_6:
+        PUSH    DPL
+          CFI CFA_SP SP+-1
+        PUSH    DPH
+          CFI CFA_SP SP+-2
+        LCALL   ?Subroutine5 & 0xFFFF
+??CrossCallReturnLabel_14:
+        POP     DPH
+          CFI CFA_SP SP+-1
+        POP     DPL
+          CFI CFA_SP SP+0
+        CLR     C
+        MOVX    A,@DPTR
+        SUBB    A,R0
+        INC     DPTR
+        MOVX    A,@DPTR
+        SUBB    A,R1
+        JNC     ??osal_mem_free_6
+        INC     R2
+        MOV     A,R2
+        CLR     C
+        SUBB    A,#0x8
+        JC      ??osal_mem_free_5
+//  552 
+//  553     proCur[idx]--;
+??osal_mem_free_6:
+        LCALL   ?Subroutine1 & 0xFFFF
+//  554   }
+??CrossCallReturnLabel_4:
+        ADD     A,#-0x1
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        ADDC    A,#-0x1
+        MOVX    @DPTR,A
+//  555 
+//  556   (void)osal_memset((uint8 *)(hdr+1), OSALMEM_REIN, (hdr->hdr.len - OSALMEM_HDRSZ) );
+??osal_mem_free_4:
+        ; Setup parameters for call to function osal_memset
+        LCALL   ?Subroutine3 & 0xFFFF
+??CrossCallReturnLabel_8:
+        MOV     R1,#0x46
+        MOV     A,R6
+        ADD     A,#0x2
+        MOV     R2,A
+        CLR     A
+        ADDC    A,R7
+        MOV     R3,A
+        LCALL   `??osal_memset::?relay`; Banked call to: osal_memset
+//  557 #endif
+//  558 #if OSALMEM_METRICS
+//  559   memAlo -= hdr->hdr.len;
+//  560   blkFree++;
+//  561 #endif
+//  562 
+//  563   HAL_EXIT_CRITICAL_SECTION( intState );  // Re-enable interrupts.
+        MOV     A,?V0
+        MOV     C,0xE0 /* A   */.0
+        MOV     0xa8.7,C
+//  564 }
+        MOV     R7,#0x1
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock13
+        REQUIRE _A_IEN0
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine5:
+          CFI Block cfiCond14 Using cfiCommon0
+          CFI Function osal_mem_alloc
+          CFI Conditional ??CrossCallReturnLabel_11
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond15 Using cfiCommon0
+          CFI (cfiCond15) Function osal_mem_alloc
+          CFI (cfiCond15) Conditional ??CrossCallReturnLabel_12
+          CFI (cfiCond15) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond15) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond15) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond15) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond15) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond15) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond15) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond15) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond15) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond15) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond15) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond15) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond15) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond15) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond15) CFA_SP SP+-4
+          CFI (cfiCond15) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond16 Using cfiCommon0
+          CFI (cfiCond16) Function osal_mem_alloc
+          CFI (cfiCond16) Conditional ??CrossCallReturnLabel_13
+          CFI (cfiCond16) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond16) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond16) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond16) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond16) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond16) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond16) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond16) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond16) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond16) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond16) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond16) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond16) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond16) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond16) CFA_SP SP+-2
+          CFI (cfiCond16) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond17 Using cfiCommon0
+          CFI (cfiCond17) Function osal_mem_free
+          CFI (cfiCond17) Conditional ??CrossCallReturnLabel_14
+          CFI (cfiCond17) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond17) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond17) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond17) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond17) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond17) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond17) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond17) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond17) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond17) CFA_SP SP+-4
+          CFI (cfiCond17) CFA_XSP16 add(XSP16, 9)
+          CFI Block cfiPicker18 Using cfiCommon1
+          CFI (cfiPicker18) NoFunction
+          CFI (cfiPicker18) Picker
+        LCALL   ?Subroutine7 & 0xFFFF
+??CrossCallReturnLabel_19:
+        RET
+          CFI EndBlock cfiCond14
+          CFI EndBlock cfiCond15
+          CFI EndBlock cfiCond16
+          CFI EndBlock cfiCond17
+          CFI EndBlock cfiPicker18
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine7:
+          CFI Block cfiCond19 Using cfiCommon0
+          CFI Function osal_mem_alloc
+          CFI Conditional ??CrossCallReturnLabel_18, ??CrossCallReturnLabel_9
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-4
+          CFI CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond20 Using cfiCommon0
+          CFI (cfiCond20) Function osal_mem_alloc
+          CFI (cfiCond20) Conditional ??CrossCallReturnLabel_18, ??CrossCallReturnLabel_10
+          CFI (cfiCond20) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond20) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond20) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond20) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond20) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond20) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond20) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond20) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond20) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond20) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond20) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond20) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond20) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond20) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond20) CFA_SP SP+-4
+          CFI (cfiCond20) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond21 Using cfiCommon0
+          CFI (cfiCond21) Function osal_mem_alloc
+          CFI (cfiCond21) Conditional ??CrossCallReturnLabel_19, ??CrossCallReturnLabel_11
+          CFI (cfiCond21) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond21) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond21) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond21) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond21) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond21) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond21) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond21) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond21) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond21) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond21) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond21) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond21) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond21) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond21) CFA_SP SP+-4
+          CFI (cfiCond21) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond22 Using cfiCommon0
+          CFI (cfiCond22) Function osal_mem_alloc
+          CFI (cfiCond22) Conditional ??CrossCallReturnLabel_19, ??CrossCallReturnLabel_12
+          CFI (cfiCond22) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond22) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond22) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond22) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond22) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond22) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond22) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond22) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond22) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond22) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond22) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond22) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond22) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond22) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond22) CFA_SP SP+-6
+          CFI (cfiCond22) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond23 Using cfiCommon0
+          CFI (cfiCond23) Function osal_mem_alloc
+          CFI (cfiCond23) Conditional ??CrossCallReturnLabel_19, ??CrossCallReturnLabel_13
+          CFI (cfiCond23) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond23) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond23) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond23) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond23) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond23) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond23) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond23) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond23) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond23) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond23) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond23) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond23) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond23) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond23) CFA_SP SP+-4
+          CFI (cfiCond23) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond24 Using cfiCommon0
+          CFI (cfiCond24) Function osal_mem_free
+          CFI (cfiCond24) Conditional ??CrossCallReturnLabel_19, ??CrossCallReturnLabel_14
+          CFI (cfiCond24) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond24) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond24) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond24) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond24) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond24) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond24) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond24) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond24) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond24) CFA_SP SP+-6
+          CFI (cfiCond24) CFA_XSP16 add(XSP16, 9)
+          CFI Block cfiCond25 Using cfiCommon0
+          CFI (cfiCond25) Function osal_mem_alloc
+          CFI (cfiCond25) Conditional ??CrossCallReturnLabel_17, ??CrossCallReturnLabel_7
+          CFI (cfiCond25) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond25) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond25) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond25) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond25) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond25) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond25) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond25) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond25) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond25) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond25) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond25) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond25) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond25) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond25) CFA_SP SP+-4
+          CFI (cfiCond25) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond26 Using cfiCommon0
+          CFI (cfiCond26) Function osal_mem_free
+          CFI (cfiCond26) Conditional ??CrossCallReturnLabel_17, ??CrossCallReturnLabel_8
+          CFI (cfiCond26) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond26) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond26) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond26) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond26) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond26) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond26) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond26) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond26) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond26) CFA_SP SP+-4
+          CFI (cfiCond26) CFA_XSP16 add(XSP16, 9)
+          CFI Block cfiPicker27 Using cfiCommon1
+          CFI (cfiPicker27) NoFunction
+          CFI (cfiPicker27) Picker
+        MOV     DPL,R6
+        MOV     DPH,R7
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        ANL     A,#0x7f
+        MOV     R1,A
+        RET
+          CFI EndBlock cfiCond19
+          CFI EndBlock cfiCond20
+          CFI EndBlock cfiCond21
+          CFI EndBlock cfiCond22
+          CFI EndBlock cfiCond23
+          CFI EndBlock cfiCond24
+          CFI EndBlock cfiCond25
+          CFI EndBlock cfiCond26
+          CFI EndBlock cfiPicker27
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine3:
+          CFI Block cfiCond28 Using cfiCommon0
+          CFI Function osal_mem_alloc
+          CFI Conditional ??CrossCallReturnLabel_7
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond29 Using cfiCommon0
+          CFI (cfiCond29) Function osal_mem_free
+          CFI (cfiCond29) Conditional ??CrossCallReturnLabel_8
+          CFI (cfiCond29) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond29) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond29) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond29) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond29) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond29) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond29) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond29) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond29) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond29) CFA_SP SP+-2
+          CFI (cfiCond29) CFA_XSP16 add(XSP16, 9)
+          CFI Block cfiPicker30 Using cfiCommon1
+          CFI (cfiPicker30) NoFunction
+          CFI (cfiPicker30) Picker
+        LCALL   ?Subroutine7 & 0xFFFF
+??CrossCallReturnLabel_17:
+        MOV     A,R0
+        ADD     A,#-0x2
+        MOV     R4,A
+        MOV     A,R1
+        ADDC    A,#-0x1
+        MOV     R5,A
+        RET
+          CFI EndBlock cfiCond28
+          CFI EndBlock cfiCond29
+          CFI EndBlock cfiPicker30
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine2:
+          CFI Block cfiCond31 Using cfiCommon0
+          CFI Function osal_mem_alloc
+          CFI Conditional ??CrossCallReturnLabel_5
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond32 Using cfiCommon0
+          CFI (cfiCond32) Function osal_mem_free
+          CFI (cfiCond32) Conditional ??CrossCallReturnLabel_6
+          CFI (cfiCond32) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond32) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond32) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond32) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond32) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond32) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond32) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond32) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond32) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond32) CFA_SP SP+-2
+          CFI (cfiCond32) CFA_XSP16 add(XSP16, 9)
+          CFI Block cfiPicker33 Using cfiCommon1
+          CFI (cfiPicker33) NoFunction
+          CFI (cfiPicker33) Picker
+        LCALL   ?Subroutine9 & 0xFFFF
+??CrossCallReturnLabel_23:
+        MOV     A,#proCnt & 0xff
+        ADD     A,R0
+        MOV     DPL,A
+        MOV     A,#(proCnt >> 8) & 0xff
+        ADDC    A,R1
+        MOV     DPH,A
+        RET
+          CFI EndBlock cfiCond31
+          CFI EndBlock cfiCond32
+          CFI EndBlock cfiPicker33
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine9:
+          CFI Block cfiCond34 Using cfiCommon0
+          CFI Function osal_mem_alloc
+          CFI Conditional ??CrossCallReturnLabel_22
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond35 Using cfiCommon0
+          CFI (cfiCond35) Function osal_mem_alloc
+          CFI (cfiCond35) Conditional ??CrossCallReturnLabel_23, ??CrossCallReturnLabel_5
+          CFI (cfiCond35) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond35) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond35) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond35) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond35) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond35) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond35) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond35) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond35) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond35) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond35) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond35) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond35) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond35) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond35) CFA_SP SP+-4
+          CFI (cfiCond35) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond36 Using cfiCommon0
+          CFI (cfiCond36) Function osal_mem_free
+          CFI (cfiCond36) Conditional ??CrossCallReturnLabel_23, ??CrossCallReturnLabel_6
+          CFI (cfiCond36) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond36) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond36) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond36) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond36) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond36) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond36) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond36) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond36) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond36) CFA_SP SP+-4
+          CFI (cfiCond36) CFA_XSP16 add(XSP16, 9)
+          CFI Block cfiCond37 Using cfiCommon0
+          CFI (cfiCond37) Function osal_mem_alloc
+          CFI (cfiCond37) Conditional ??CrossCallReturnLabel_24, ??CrossCallReturnLabel_20
+          CFI (cfiCond37) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond37) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond37) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond37) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond37) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond37) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond37) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond37) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond37) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond37) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond37) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond37) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond37) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond37) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond37) CFA_SP SP+-4
+          CFI (cfiCond37) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond38 Using cfiCommon0
+          CFI (cfiCond38) Function osal_mem_alloc
+          CFI (cfiCond38) Conditional ??CrossCallReturnLabel_24, ??CrossCallReturnLabel_21, ??CrossCallReturnLabel_3
+          CFI (cfiCond38) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond38) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond38) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond38) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond38) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond38) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond38) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond38) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond38) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond38) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond38) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond38) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond38) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond38) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond38) CFA_SP SP+-6
+          CFI (cfiCond38) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond39 Using cfiCommon0
+          CFI (cfiCond39) Function osal_mem_free
+          CFI (cfiCond39) Conditional ??CrossCallReturnLabel_24, ??CrossCallReturnLabel_21, ??CrossCallReturnLabel_4
+          CFI (cfiCond39) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond39) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond39) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond39) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond39) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond39) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond39) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond39) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond39) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond39) CFA_SP SP+-6
+          CFI (cfiCond39) CFA_XSP16 add(XSP16, 9)
+          CFI Block cfiPicker40 Using cfiCommon1
+          CFI (cfiPicker40) NoFunction
+          CFI (cfiPicker40) Picker
+        MOV     A,R2
+        ADD     A,0xE0 /* A   */
+        MOV     R0,A
+        CLR     A
+        RLC     A
+        MOV     R1,A
+        RET
+          CFI EndBlock cfiCond34
+          CFI EndBlock cfiCond35
+          CFI EndBlock cfiCond36
+          CFI EndBlock cfiCond37
+          CFI EndBlock cfiCond38
+          CFI EndBlock cfiCond39
+          CFI EndBlock cfiPicker40
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine1:
+          CFI Block cfiCond41 Using cfiCommon0
+          CFI Function osal_mem_alloc
+          CFI Conditional ??CrossCallReturnLabel_3
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond42 Using cfiCommon0
+          CFI (cfiCond42) Function osal_mem_free
+          CFI (cfiCond42) Conditional ??CrossCallReturnLabel_4
+          CFI (cfiCond42) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond42) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond42) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond42) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond42) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond42) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond42) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond42) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond42) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond42) CFA_SP SP+-2
+          CFI (cfiCond42) CFA_XSP16 add(XSP16, 9)
+          CFI Block cfiPicker43 Using cfiCommon1
+          CFI (cfiPicker43) NoFunction
+          CFI (cfiPicker43) Picker
+        LCALL   ?Subroutine8 & 0xFFFF
+??CrossCallReturnLabel_21:
+        MOV     DPL,A
+        MOV     A,#(proCur >> 8) & 0xff
+        ADDC    A,R1
+        MOV     DPH,A
+        MOVX    A,@DPTR
+        RET
+          CFI EndBlock cfiCond41
+          CFI EndBlock cfiCond42
+          CFI EndBlock cfiPicker43
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine8:
+          CFI Block cfiCond44 Using cfiCommon0
+          CFI Function osal_mem_alloc
+          CFI Conditional ??CrossCallReturnLabel_20
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond45 Using cfiCommon0
+          CFI (cfiCond45) Function osal_mem_alloc
+          CFI (cfiCond45) Conditional ??CrossCallReturnLabel_21, ??CrossCallReturnLabel_3
+          CFI (cfiCond45) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond45) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond45) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond45) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond45) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond45) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond45) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond45) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond45) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond45) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond45) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond45) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond45) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond45) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond45) CFA_SP SP+-4
+          CFI (cfiCond45) CFA_XSP16 add(XSP16, 14)
+          CFI Block cfiCond46 Using cfiCommon0
+          CFI (cfiCond46) Function osal_mem_free
+          CFI (cfiCond46) Conditional ??CrossCallReturnLabel_21, ??CrossCallReturnLabel_4
+          CFI (cfiCond46) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond46) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond46) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond46) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond46) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond46) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond46) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond46) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond46) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond46) CFA_SP SP+-4
+          CFI (cfiCond46) CFA_XSP16 add(XSP16, 9)
+          CFI Block cfiPicker47 Using cfiCommon1
+          CFI (cfiPicker47) NoFunction
+          CFI (cfiPicker47) Picker
+        LCALL   ?Subroutine9 & 0xFFFF
+??CrossCallReturnLabel_24:
+        MOV     A,#proCur & 0xff
+        ADD     A,R0
+        RET
+          CFI EndBlock cfiCond44
+          CFI EndBlock cfiCond45
+          CFI EndBlock cfiCond46
+          CFI EndBlock cfiPicker47
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for proCnt>`:
+        DATA16
+        DW 16
+        DW 48
+        DW 112
+        DW 176
+        DW 192
+        DW 224
+        DW 256
+        DW 65535
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??osal_mem_init::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    osal_mem_init
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??osal_mem_kick::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    osal_mem_kick
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??osal_mem_alloc::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    osal_mem_alloc
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??osal_mem_free::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    osal_mem_free
+
+        END
+//  565 
+//  566 #if OSALMEM_METRICS
+//  567 /*********************************************************************
+//  568  * @fn      osal_heap_block_max
+//  569  *
+//  570  * @brief   Return the maximum number of blocks ever allocated at once.
+//  571  *
+//  572  * @param   none
+//  573  *
+//  574  * @return  Maximum number of blocks ever allocated at once.
+//  575  */
+//  576 uint16 osal_heap_block_max( void )
+//  577 {
+//  578   return blkMax;
+//  579 }
+//  580 
+//  581 /*********************************************************************
+//  582  * @fn      osal_heap_block_cnt
+//  583  *
+//  584  * @brief   Return the current number of blocks now allocated.
+//  585  *
+//  586  * @param   none
+//  587  *
+//  588  * @return  Current number of blocks now allocated.
+//  589  */
+//  590 uint16 osal_heap_block_cnt( void )
+//  591 {
+//  592   return blkCnt;
+//  593 }
+//  594 
+//  595 /*********************************************************************
+//  596  * @fn      osal_heap_block_free
+//  597  *
+//  598  * @brief   Return the current number of free blocks.
+//  599  *
+//  600  * @param   none
+//  601  *
+//  602  * @return  Current number of free blocks.
+//  603  */
+//  604 uint16 osal_heap_block_free( void )
+//  605 {
+//  606   return blkFree;
+//  607 }
+//  608 
+//  609 /*********************************************************************
+//  610  * @fn      osal_heap_mem_used
+//  611  *
+//  612  * @brief   Return the current number of bytes allocated.
+//  613  *
+//  614  * @param   none
+//  615  *
+//  616  * @return  Current number of bytes allocated.
+//  617  */
+//  618 uint16 osal_heap_mem_used( void )
+//  619 {
+//  620   return memAlo;
+//  621 }
+//  622 #endif
+//  623 
+//  624 #if defined (ZTOOL_P1) || defined (ZTOOL_P2)
+//  625 /*********************************************************************
+//  626  * @fn      osal_heap_high_water
+//  627  *
+//  628  * @brief   Return the highest byte ever allocated in the heap.
+//  629  *
+//  630  * @param   none
+//  631  *
+//  632  * @return  Highest number of bytes ever used by the stack.
+//  633  */
+//  634 uint16 osal_heap_high_water( void )
+//  635 {
+//  636 #if ( OSALMEM_METRICS )
+//  637   return memMax;
+//  638 #else
+//  639   return MAXMEMHEAP;
+//  640 #endif
+//  641 }
+//  642 #endif
+//  643 
+//  644 /**************************************************************************************************
+//  645 */
+// 
+//   887 bytes in segment BANKED_CODE
+//    24 bytes in segment BANK_RELAYS
+//     1 byte  in segment SFR_AN
+//    16 bytes in segment XDATA_I
+//    16 bytes in segment XDATA_ID
+// 1 002 bytes in segment XDATA_N
+//    51 bytes in segment XDATA_Z
+// 
+//   927 bytes of CODE  memory
+//     0 bytes of DATA  memory (+ 1 byte shared)
+// 1 069 bytes of XDATA memory
+//
+//Errors: none
+//Warnings: none

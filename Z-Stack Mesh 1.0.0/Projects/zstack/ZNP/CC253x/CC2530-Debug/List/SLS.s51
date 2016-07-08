@@ -1,0 +1,792 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// IAR C/C++ Compiler V9.30.1.3056 for 8051               06/Jul/2016  15:51:35
+// Copyright 2004-2015 IAR Systems AB.
+// Standalone license - IAR Embedded Workbench for 8051
+//
+//    Core               =  plain
+//    Code model         =  banked
+//    Data model         =  large
+//    Calling convention =  xdata reentrant
+//    Constant location  =  data_rom
+//    Dptr setup         =  1,16
+//                          
+//    Source file        =  
+//        C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\Source\SLS.c
+//    Command line       =  
+//        -f "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\Source\znp.cfg"
+//        (-DMAC_CFG_APP_PENDING_QUEUE=TRUE
+//        "-DZSTACK_DEVICE_BUILD=(DEVICE_BUILD_COORDINATOR |
+//        DEVICE_BUILD_ROUTER | DEVICE_BUILD_ENDDEVICE)" -DNWK_AUTO_POLL
+//        -DZNP_RUN_WDOG=FALSE -DZNP_UART_BAUD=HAL_UART_BR_115200 -DZIGBEEPRO
+//        -DZIGBEE_FRAGMENTATION -DINTER_PAN -DOSAL_CLOCK -DOSAL_SAPI=FALSE
+//        -DSAPI_CB_FUNC=FALSE -DHOLD_AUTO_START -DNV_RESTORE -DNV_INIT
+//        -DNUM_DISC_ATTEMPTS=0 -DMT_UTIL_FUNC -DMT_SYS_FUNC -DMT_AF_FUNC
+//        -DMT_SAPI_FUNC -DMT_SAPI_CB_FUNC -DMT_ZDO_CB_FUNC -DMT_ZDO_FUNC
+//        -DMT_ZDO_MGMT -DMT_ZDO_EXTENSIONS -DMT_APP_FUNC) -f "C:\Texas
+//        Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\Tools\CC2530DB\f8wConfig.cfg"
+//        (-DZIGBEEPRO -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
+//        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
+//        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
+//        -DBEACON_REQUEST_DELAY=100 -DBEACON_REQ_DELAY_MASK=0x00FF
+//        -DLINK_STATUS_JITTER_MASK=0x007F -DROUTE_EXPIRY_TIME=30
+//        -DAPSC_ACK_WAIT_DURATION_POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7
+//        -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3
+//        -DNWK_MAX_DATA_RETRIES=2 -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9
+//        -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40 -DNWK_MAX_BINDING_ENTRIES=4
+//        -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07,
+//        0x09, 0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C,
+//        0x0D}" -DMAC_MAX_FRAME_SIZE=116 -DZDNWKMGR_MIN_TRANSMISSIONS=20
+//        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
+//        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100
+//        -DREJOIN_POLL_RATE=440) -f "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\Tools\CC2530DB\f8wZCL.cfg"
+//        "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\Source\SLS.c" -D FEATURE_SYSTEM_STATS -D
+//        POWER_SAVING -lC "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\CC2530-Debug\List" -lA "C:\Texas
+//        Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\CC2530-Debug\List" --diag_suppress
+//        Pe001,Pa010 -o "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\CC2530-Debug\Obj" -e
+//        --no_code_motion --debug --core=plain --dptr=16,1 --data_model=large
+//        --code_model=banked --calling_convention=xdata_reentrant
+//        --place_constants=data_rom --nr_virtual_regs 16 -I "C:\Texas
+//        Instruments\Z-Stack Mesh 1.0.0\Projects\zstack\ZNP\CC253x\" -I
+//        "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\Source\" -I "C:\Texas
+//        Instruments\Z-Stack Mesh 1.0.0\Projects\zstack\ZNP\CC253x\..\Source\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\SE\Source\" -I "C:\Texas
+//        Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\ZMain\TI2530ZNP\" -I "C:\Texas
+//        Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\hal\include\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\hal\target\CC2530ZNP\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\mac\include\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\mac\high_level\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\mac\low_level\srf04\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\mac\low_level\srf04\single_chip\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\mt\" -I
+//        "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\osal\include\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\services\saddr\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\services\sdata\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\stack\af\" -I
+//        "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\stack\nwk\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\stack\sapi\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\stack\sec\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\stack\sys\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\stack\zcl\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\stack\zdo\"
+//        -I "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\zmac\" -I
+//        "C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\..\..\..\..\Components\zmac\f8w\"
+//        -Ohz --require_prototypes
+//    List file          =  
+//        C:\Texas Instruments\Z-Stack Mesh
+//        1.0.0\Projects\zstack\ZNP\CC253x\CC2530-Debug\List\SLS.s51
+//
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME SLS
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?V0
+        EXTERN ?V1
+        EXTERN ?ALLOC_XSTACK8
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN ?DEALLOC_XSTACK8
+        EXTERN ?MOVE_LONG8_XDATA_XDATA
+        EXTERN ?XSP
+        EXTERN ?XSTACK_DISP0_8
+        EXTERN __INIT_XDATA_Z
+
+        PUBLIC `??SLS_Init::?relay`
+        FUNCTION `??SLS_Init::?relay`,0203H
+        PUBLIC `??SLS_ProcessEvent::?relay`
+        FUNCTION `??SLS_ProcessEvent::?relay`,0203H
+        PUBLIC `??SLS_UartCback::?relay`
+        FUNCTION `??SLS_UartCback::?relay`,0203H
+        PUBLIC `??TestUARTFunc::?relay`
+        FUNCTION `??TestUARTFunc::?relay`,0203H
+        PUBLIC `??initUart::?relay`
+        FUNCTION `??initUart::?relay`,0203H
+        PUBLIC SLS_Init
+        FUNCTION SLS_Init,0203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC SLS_ProcessEvent
+        FUNCTION SLS_ProcessEvent,0a1203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        PUBLIC SLS_TaskID
+        PUBLIC SLS_UartCback
+        FUNCTION SLS_UartCback,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC TestUARTFunc
+        FUNCTION TestUARTFunc,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 15, STACK
+        PUBLIC initUart
+        FUNCTION initUart,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME XSTACK, 29, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource V8:8, V9:8, V10:8, V11:8, V12:8, V13:8, V14:8, V15:8, SP:8
+          CFI Resource PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI V8 SameValue
+          CFI V9 SameValue
+          CFI V10 SameValue
+          CFI V11 SameValue
+          CFI V12 SameValue
+          CFI V13 SameValue
+          CFI V14 SameValue
+          CFI V15 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+HalUARTOpen         SYMBOL "HalUARTOpen"
+`??HalUARTOpen::?relay` SYMBOL "?relay", HalUARTOpen
+HalUARTWrite        SYMBOL "HalUARTWrite"
+`??HalUARTWrite::?relay` SYMBOL "?relay", HalUARTWrite
+osal_msg_deallocate SYMBOL "osal_msg_deallocate"
+`??osal_msg_deallocate::?relay` SYMBOL "?relay", osal_msg_deallocate
+osal_msg_receive    SYMBOL "osal_msg_receive"
+`??osal_msg_receive::?relay` SYMBOL "?relay", osal_msg_receive
+SLS_Init            SYMBOL "SLS_Init"
+`??SLS_Init::?relay` SYMBOL "?relay", SLS_Init
+SLS_ProcessEvent    SYMBOL "SLS_ProcessEvent"
+`??SLS_ProcessEvent::?relay` SYMBOL "?relay", SLS_ProcessEvent
+SLS_UartCback       SYMBOL "SLS_UartCback"
+`??SLS_UartCback::?relay` SYMBOL "?relay", SLS_UartCback
+TestUARTFunc        SYMBOL "TestUARTFunc"
+`??TestUARTFunc::?relay` SYMBOL "?relay", TestUARTFunc
+initUart            SYMBOL "initUart"
+`??initUart::?relay` SYMBOL "?relay", initUart
+
+        EXTERN `??HalUARTOpen::?relay`
+        FUNCTION `??HalUARTOpen::?relay`,00H
+        EXTERN `??HalUARTWrite::?relay`
+        FUNCTION `??HalUARTWrite::?relay`,00H
+        EXTERN `??osal_msg_deallocate::?relay`
+        FUNCTION `??osal_msg_deallocate::?relay`,00H
+        EXTERN `??osal_msg_receive::?relay`
+        FUNCTION `??osal_msg_receive::?relay`,00H
+        EXTERN HalUARTOpen
+        FUNCTION HalUARTOpen,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 29, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN HalUARTWrite
+        FUNCTION HalUARTWrite,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 15, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN osal_msg_deallocate
+        FUNCTION osal_msg_deallocate,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN osal_msg_receive
+        FUNCTION osal_msg_receive,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+
+// C:\Texas Instruments\Z-Stack Mesh 1.0.0\Projects\zstack\ZNP\Source\SLS.c
+//    1 #include "SLS.h"
+//    2 #include "hal_key.h"
+//    3 #include "hal_lcd.h"
+//    4 #include "hal_led.h"
+//    5 #include "hal_sleep.h"
+//    6 #include "hal_timer.h"
+//    7 #include "hal_types.h"
+//    8 #include "hal_uart.h"
+//    9 #include "hal_defs.h"
+//   10 #include "znp_app.h"
+//   11 #include "OSAL.h"
+//   12 
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   13 uint8 SLS_TaskID;
+SLS_TaskID:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+//   14 
+//   15 void initUart(halUARTCBack_t pf);
+//   16 void SLS_UartCback(uint8 port, uint8 event);
+//   17 
+//   18 static void LedTest( int i, unsigned char val );
+//   19 
+//   20 static void LedTest( int i, unsigned char val ){
+//   21   P0DIR |= 0x03;
+//   22   if(i==1)
+//   23     P0_1 = val;
+//   24   else
+//   25     P0_0 = val;
+//   26 }
+//   27 
+//   28 /**************************************************************************************************
+//   29 * @fn      Hal_Init
+//   30 *
+//   31 * @brief   Hal Initialization function.
+//   32 *
+//   33 * @param   task_id - Hal TaskId
+//   34 *
+//   35 * @return  None
+//   36 **************************************************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   37 void SLS_Init(uint8 task_id)
+SLS_Init:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function SLS_Init
+        CODE
+//   38 {
+        PUSH    DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH    DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//   39 	/* Register task ID */
+//   40 	SLS_TaskID = task_id;
+        MOV     A,R1
+        MOV     DPTR,#SLS_TaskID
+        MOVX    @DPTR,A
+//   41     //initUart(SLS_UartCback);
+//   42 }
+          CFI EndBlock cfiBlock0
+        REQUIRE ?Subroutine0
+        ; // Fall through to label ?Subroutine0
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine0:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+-5
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI DPH0 Frame(CFA_SP, 5)
+        POP     DPH
+          CFI CFA_SP SP+-4
+          CFI DPH0 SameValue
+        POP     DPL
+          CFI CFA_SP SP+-3
+          CFI DPL0 SameValue
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock1
+//   43 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   44 void SLS_UartCback(uint8 port, uint8 event)
+SLS_UartCback:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function SLS_UartCback
+        CODE
+//   45 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   46         
+//   47 	switch (event) {
+//   48 	case HAL_UART_RX_FULL:
+//   49 	case HAL_UART_RX_ABOUT_FULL:
+//   50 	case HAL_UART_RX_TIMEOUT:
+//   51 		break;
+//   52 
+//   53 	case HAL_UART_TX_EMPTY:
+//   54 		break;
+//   55 
+//   56 	default:
+//   57 		break;
+//   58 	}
+//   59 }
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock2
+//   60 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   61 void initUart(halUARTCBack_t pf)
+initUart:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function initUart
+        CODE
+//   62 {
+        FUNCALL initUart, HalUARTOpen
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 29, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 29, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH    DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH    DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 29
+        MOV     A,#-0x1d
+        LCALL   ?ALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 29)
+//   63   	  halUARTCfg_t uartConfig;
+//   64 
+//   65 	  uartConfig.configured = TRUE;
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     A,#0x1
+        MOVX    @DPTR,A
+//   66 	  uartConfig.baudRate = HAL_UART_BR_9600;//ZNP_UART_BAUD;
+        LCALL   ?XSTACK_DISP0_8
+        CLR     A
+        MOVX    @DPTR,A
+//   67 	  uartConfig.flowControl = TRUE;
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,#0x1
+        MOVX    @DPTR,A
+//   68 	  uartConfig.flowControlThreshold = 48;// HAL_UART_FLOW_THRESHOLD;
+        MOV     A,#0x3
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,#0x30
+        MOVX    @DPTR,A
+        INC     DPTR
+        CLR     A
+        MOVX    @DPTR,A
+//   69 	  uartConfig.rx.maxBufSize = 128;// HAL_UART_RX_BUF_SIZE;
+        MOV     A,#0xa
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,#-0x80
+        MOVX    @DPTR,A
+        INC     DPTR
+        CLR     A
+        MOVX    @DPTR,A
+//   70 	  uartConfig.tx.maxBufSize = 128;// HAL_UART_TX_BUF_SIZE;
+        MOV     A,#0x12
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,#-0x80
+        MOVX    @DPTR,A
+        INC     DPTR
+        CLR     A
+        MOVX    @DPTR,A
+//   71 	  uartConfig.idleTimeout = 6;// HAL_UART_IDLE_TIMEOUT;
+        MOV     A,#0x5
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,#0x6
+        MOVX    @DPTR,A
+//   72 	  uartConfig.intEnable = TRUE;
+        MOV     A,#0x16
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,#0x1
+        MOVX    @DPTR,A
+//   73 	  uartConfig.callBackFunc = pf;
+        MOV     A,#0x1b
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,R2
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R3
+        MOVX    @DPTR,A
+//   74 	  HalUARTOpen(HAL_UART_PORT_0, &uartConfig);
+        ; Setup parameters for call to function HalUARTOpen
+        MOV     R2,?XSP + 0
+        MOV     R3,?XSP + 1
+        MOV     R1,#0x0
+        LCALL   `??HalUARTOpen::?relay`; Banked call to: HalUARTOpen
+//   75 }
+        MOV     A,#0x1d
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 XSP16+0
+        SJMP    ?Subroutine0
+          CFI EndBlock cfiBlock3
+//   76 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   77 void TestUARTFunc(void){
+TestUARTFunc:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function TestUARTFunc
+        CODE
+        FUNCALL TestUARTFunc, HalUARTWrite
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 15, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 15, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0x9
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 6
+        MOV     A,#-0x6
+        LCALL   ?ALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 15)
+//   78   
+//   79          uint8 buf[] = { 0x30, 0x31, 0x32, 0x33, 0x34, 0x35 };
+        MOV     DPTR,#`?<Constant {48, 49, 50, 51, 52, 53}>`
+        MOV     R4,?XSP + 0
+        MOV     R5,?XSP + 1
+        MOV     A,#0x6
+        LCALL   ?MOVE_LONG8_XDATA_XDATA
+//   80          int i =10;
+        MOV     R6,#0xa
+        MOV     R7,A
+        SJMP    ??TestUARTFunc_0
+//   81  	while (i-- >0)
+//   82  	{
+//   83  		HalUARTWrite(HAL_UART_PORT_1, buf, 6);
+??TestUARTFunc_1:
+        ; Setup parameters for call to function HalUARTWrite
+        MOV     R4,#0x6
+        MOV     R5,#0x0
+        MOV     R2,?XSP + 0
+        MOV     R3,?XSP + 1
+        MOV     R1,#0x1
+        LCALL   `??HalUARTWrite::?relay`; Banked call to: HalUARTWrite
+//   84  	}
+??TestUARTFunc_0:
+        MOV     A,R6
+        MOV     R0,A
+        MOV     A,R7
+        MOV     R1,A
+        MOV     A,R0
+        ADD     A,#-0x1
+        DEC     R6
+        MOV     A,R1
+        ADDC    A,#-0x1
+        MOV     R7,A
+        CLR     C
+        MOV     A,R0
+        SUBB    A,#0x1
+        MOV     A,R1
+        SUBB    A,#0x0
+        MOV     C,0xD0 /* PSW */.2
+        XRL     A,PSW
+        RLC     A
+        JNC     ??TestUARTFunc_1
+//   85 }
+        MOV     A,#0x6
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 9)
+        MOV     R7,#0x1
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock4
+//   86 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   87 uint16 SLS_ProcessEvent(uint8 task_id, uint16 events)
+SLS_ProcessEvent:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI Function SLS_ProcessEvent
+        CODE
+//   88 {
+        FUNCALL SLS_ProcessEvent, osal_msg_receive
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL SLS_ProcessEvent, osal_msg_deallocate
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL SLS_ProcessEvent, osal_msg_receive
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV     A,#-0xa
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+        ; Saved register size: 10
+        ; Auto size: 0
+        MOV     A,R2
+        MOV     R6,A
+        MOV     A,R3
+        MOV     R7,A
+//   89 	uint8 *msgPtr;
+//   90 
+//   91 	(void)task_id;  // Intentionally unreferenced parameter
+//   92 
+//   93 	if (events & SYS_EVENT_MSG)
+        ANL     A,#0x80
+        JZ      ??SLS_ProcessEvent_0
+//   94 	{
+//   95 		msgPtr = osal_msg_receive(SLS_TaskID);
+        ; Setup parameters for call to function osal_msg_receive
+        SJMP    ??SLS_ProcessEvent_1
+//   96 
+//   97 		while (msgPtr)
+//   98 		{
+//   99 			/* Do something here - for now, just deallocate the msg and move on */
+//  100 
+//  101 			/* De-allocate */
+//  102 			osal_msg_deallocate(msgPtr);
+??SLS_ProcessEvent_2:
+        ; Setup parameters for call to function osal_msg_deallocate
+        LCALL   `??osal_msg_deallocate::?relay`; Banked call to: osal_msg_deallocate
+//  103 			/* Next */
+//  104 			msgPtr = osal_msg_receive(SLS_TaskID);
+        ; Setup parameters for call to function osal_msg_receive
+??SLS_ProcessEvent_1:
+        MOV     DPTR,#SLS_TaskID
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   `??osal_msg_receive::?relay`; Banked call to: osal_msg_receive
+//  105 		}
+        MOV     A,R2
+        ORL     A,R3
+        JNZ     ??SLS_ProcessEvent_2
+//  106 		return events ^ SYS_EVENT_MSG;
+        MOV     A,R6
+        MOV     R2,A
+        MOV     A,R7
+        XRL     A,#0x80
+        MOV     R3,A
+        SJMP    ??SLS_ProcessEvent_3
+//  107 	}
+//  108 
+//  109 	return 0;
+??SLS_ProcessEvent_0:
+        MOV     R2,#0x0
+        MOV     R3,#0x0
+??SLS_ProcessEvent_3:
+        MOV     R7,#0x2
+        LJMP    ?BANKED_LEAVE_XDATA
+//  110 }
+          CFI EndBlock cfiBlock5
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??SLS_Init::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    SLS_Init
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??SLS_UartCback::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    SLS_UartCback
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??initUart::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    initUart
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??TestUARTFunc::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    TestUARTFunc
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??SLS_ProcessEvent::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    SLS_ProcessEvent
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+`?<Constant {48, 49, 50, 51, 52, 53}>`:
+        DB 48
+        DB 49
+        DB 50
+        DB 51
+        DB 52
+        DB 53
+
+        END
+// 
+// 248 bytes in segment BANKED_CODE
+//  30 bytes in segment BANK_RELAYS
+//   6 bytes in segment XDATA_ROM_C
+//   1 byte  in segment XDATA_Z
+// 
+// 278 bytes of CODE  memory
+//   6 bytes of CONST memory
+//   1 byte  of XDATA memory
+//
+//Errors: none
+//Warnings: 1
